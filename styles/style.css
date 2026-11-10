@@ -1,5 +1,123 @@
-/* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
-
 .page {
-  /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
+  color: var(--main-text-color);
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  background-color: var(--background-color);
+  background-image: var(--background-image);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.decorated-zone {
+  position: relative;
+}
+
+.decorated-zone::before {
+  content: '';
+  position: absolute;
+  inline-size: 25px;
+  block-size: 25px;
+  inset-block-start: var(--page-gap);
+  inset-inline-end: var(--page-gap);
+  border-block-start: 1px solid var(--interactive-color);
+  border-inline-end: 1px solid var(--interactive-color);
+}
+
+.decorated-zone::after {
+  content: '';
+  position: absolute;
+  inline-size: 25px;
+  block-size: 25px;
+  inset-block-end: var(--page-gap);
+  inset-inline-start: var(--page-gap);
+  border-block-end: 1px solid var(--interactive-color);
+  border-inline-start: 1px solid var(--interactive-color);
+}
+
+.header {
+  display: grid;
+  grid-template-rows: 1fr min-content 1fr;
+  justify-items: end;
+  align-items: center;
+  block-size: 100vh;
+  min-block-size: 668px;
+  padding: var(--page-gap);
+}
+
+@supports (block-size: 100dvb) {
+  .header {
+    block-size: 100dvb;
+  }
+}
+
+.header__rec {
+  position: absolute;
+  inset-block-start: calc(var(--page-gap) + 2px);
+  inset-inline-end: calc(var(--page-gap) + 28px);
+  color: var(--interactive-color);
+  text-transform: uppercase;
+}
+
+.header__rec::after {
+  content: '';
+  position: absolute;
+  inline-size: 9px;
+  block-size: 9px;
+  inset-block-start: 6px;
+  inset-inline-end: -22px;
+  border-radius: 50%;
+  background-color: var(--interactive-color);
+  box-shadow: 0 0 4px 2px var(--interactive-color);
+}
+
+.header__theme-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--page-gap);
+}
+
+.header__theme-menu-button {
+  padding: 2px 13px 4px;
+  border: 1px solid transparent;
+  color: var(--interactive-color);
+  line-height: 1;
+  text-transform: lowercase;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.header__theme-menu-button:hover {
+  border: 1px solid var(--interactive-hover-color);
+}
+
+.header__theme-menu-button:focus {
+  outline: none;
+}
+
+.header__theme-menu-button:focus-visible {
+  border-block-end: 1px solid var(--interactive-color);
+}
+
+.header__theme-menu-button_active {
+  border: 1px solid var(--interactive-color);
+  pointer-events: none;
+}
+
+.header__logo {
+  justify-self: start;
+  color: var(--logo-color);
+  font-size: var(--logo-size);
+  line-height: 0.825;
+  text-shadow: 4px 4px 0 var(--accent-color);
+}
+
+.header__subtitle {
+  font-weight: bold;
+}
+
+.title-decor {
+  color: var(--decor-text-color);
+  background-color: var(--accent-color);
 }
